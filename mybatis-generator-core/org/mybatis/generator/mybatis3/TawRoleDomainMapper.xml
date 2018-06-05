@@ -1,0 +1,1420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.generator.mybatis3.TawRoleDomainMapper">
+  <resultMap id="BaseResultMap" type="org.mybatis.generator.mybatis3.TawRoleDomain">
+    <id column="DOMAIN_ID" jdbcType="VARCHAR" property="domainId" />
+    <id column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
+    <result column="DOMTYPEID" jdbcType="VARCHAR" property="domtypeid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    DOMAIN_ID, ROLE_ID, DOMTYPEID
+  </sql>
+  <select id="selectByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TAW_ROLE_DOMAIN
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainKey">
+    delete from TAW_ROLE_DOMAIN
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample">
+    delete from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    insert into TAW_ROLE_DOMAIN (DOMAIN_ID, ROLE_ID, DOMTYPEID
+      )
+    values (#{domainId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{domtypeid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    insert into TAW_ROLE_DOMAIN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        DOMAIN_ID,
+      </if>
+      <if test="roleId != null">
+        ROLE_ID,
+      </if>
+      <if test="domtypeid != null">
+        DOMTYPEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        #{domainId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="domtypeid != null">
+        #{domtypeid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample" resultType="java.lang.Integer">
+    select count(*) from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update TAW_ROLE_DOMAIN
+    <set>
+      <if test="record.domainId != null">
+        DOMAIN_ID = #{record.domainId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleId != null">
+        ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.domtypeid != null">
+        DOMTYPEID = #{record.domtypeid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update TAW_ROLE_DOMAIN
+    set DOMAIN_ID = #{record.domainId,jdbcType=VARCHAR},
+      ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      DOMTYPEID = #{record.domtypeid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    update TAW_ROLE_DOMAIN
+    <set>
+      <if test="domtypeid != null">
+        DOMTYPEID = #{domtypeid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    update TAW_ROLE_DOMAIN
+    set DOMTYPEID = #{domtypeid,jdbcType=VARCHAR}
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="org.mybatis.generator.mybatis3.TawRoleDomain">
+    <id column="DOMAIN_ID" jdbcType="VARCHAR" property="domainId" />
+    <id column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
+    <result column="DOMTYPEID" jdbcType="VARCHAR" property="domtypeid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    DOMAIN_ID, ROLE_ID, DOMTYPEID
+  </sql>
+  <select id="selectByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TAW_ROLE_DOMAIN
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainKey">
+    delete from TAW_ROLE_DOMAIN
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample">
+    delete from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    insert into TAW_ROLE_DOMAIN (DOMAIN_ID, ROLE_ID, DOMTYPEID
+      )
+    values (#{domainId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{domtypeid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    insert into TAW_ROLE_DOMAIN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        DOMAIN_ID,
+      </if>
+      <if test="roleId != null">
+        ROLE_ID,
+      </if>
+      <if test="domtypeid != null">
+        DOMTYPEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        #{domainId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="domtypeid != null">
+        #{domtypeid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample" resultType="java.lang.Integer">
+    select count(*) from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update TAW_ROLE_DOMAIN
+    <set>
+      <if test="record.domainId != null">
+        DOMAIN_ID = #{record.domainId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleId != null">
+        ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.domtypeid != null">
+        DOMTYPEID = #{record.domtypeid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update TAW_ROLE_DOMAIN
+    set DOMAIN_ID = #{record.domainId,jdbcType=VARCHAR},
+      ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      DOMTYPEID = #{record.domtypeid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    update TAW_ROLE_DOMAIN
+    <set>
+      <if test="domtypeid != null">
+        DOMTYPEID = #{domtypeid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    update TAW_ROLE_DOMAIN
+    set DOMTYPEID = #{domtypeid,jdbcType=VARCHAR}
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="org.mybatis.generator.mybatis3.TawRoleDomain">
+    <id column="DOMAIN_ID" jdbcType="VARCHAR" property="domainId" />
+    <id column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
+    <result column="DOMTYPEID" jdbcType="VARCHAR" property="domtypeid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    DOMAIN_ID, ROLE_ID, DOMTYPEID
+  </sql>
+  <select id="selectByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TAW_ROLE_DOMAIN
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainKey">
+    delete from TAW_ROLE_DOMAIN
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample">
+    delete from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    insert into TAW_ROLE_DOMAIN (DOMAIN_ID, ROLE_ID, DOMTYPEID
+      )
+    values (#{domainId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{domtypeid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    insert into TAW_ROLE_DOMAIN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        DOMAIN_ID,
+      </if>
+      <if test="roleId != null">
+        ROLE_ID,
+      </if>
+      <if test="domtypeid != null">
+        DOMTYPEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        #{domainId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="domtypeid != null">
+        #{domtypeid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample" resultType="java.lang.Integer">
+    select count(*) from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update TAW_ROLE_DOMAIN
+    <set>
+      <if test="record.domainId != null">
+        DOMAIN_ID = #{record.domainId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleId != null">
+        ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.domtypeid != null">
+        DOMTYPEID = #{record.domtypeid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update TAW_ROLE_DOMAIN
+    set DOMAIN_ID = #{record.domainId,jdbcType=VARCHAR},
+      ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      DOMTYPEID = #{record.domtypeid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    update TAW_ROLE_DOMAIN
+    <set>
+      <if test="domtypeid != null">
+        DOMTYPEID = #{domtypeid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    update TAW_ROLE_DOMAIN
+    set DOMTYPEID = #{domtypeid,jdbcType=VARCHAR}
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="org.mybatis.generator.mybatis3.TawRoleDomain">
+    <id column="DOMAIN_ID" jdbcType="VARCHAR" property="domainId" />
+    <id column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
+    <result column="DOMTYPEID" jdbcType="VARCHAR" property="domtypeid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    DOMAIN_ID, ROLE_ID, DOMTYPEID
+  </sql>
+  <select id="selectByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TAW_ROLE_DOMAIN
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainKey">
+    delete from TAW_ROLE_DOMAIN
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample">
+    delete from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    insert into TAW_ROLE_DOMAIN (DOMAIN_ID, ROLE_ID, DOMTYPEID
+      )
+    values (#{domainId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{domtypeid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    insert into TAW_ROLE_DOMAIN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        DOMAIN_ID,
+      </if>
+      <if test="roleId != null">
+        ROLE_ID,
+      </if>
+      <if test="domtypeid != null">
+        DOMTYPEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        #{domainId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="domtypeid != null">
+        #{domtypeid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample" resultType="java.lang.Integer">
+    select count(*) from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update TAW_ROLE_DOMAIN
+    <set>
+      <if test="record.domainId != null">
+        DOMAIN_ID = #{record.domainId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleId != null">
+        ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.domtypeid != null">
+        DOMTYPEID = #{record.domtypeid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update TAW_ROLE_DOMAIN
+    set DOMAIN_ID = #{record.domainId,jdbcType=VARCHAR},
+      ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      DOMTYPEID = #{record.domtypeid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    update TAW_ROLE_DOMAIN
+    <set>
+      <if test="domtypeid != null">
+        DOMTYPEID = #{domtypeid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    update TAW_ROLE_DOMAIN
+    set DOMTYPEID = #{domtypeid,jdbcType=VARCHAR}
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="org.mybatis.generator.mybatis3.TawRoleDomain">
+    <id column="DOMAIN_ID" jdbcType="VARCHAR" property="domainId" />
+    <id column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
+    <result column="DOMTYPEID" jdbcType="VARCHAR" property="domtypeid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    DOMAIN_ID, ROLE_ID, DOMTYPEID
+  </sql>
+  <select id="selectByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TAW_ROLE_DOMAIN
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainKey">
+    delete from TAW_ROLE_DOMAIN
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample">
+    delete from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    insert into TAW_ROLE_DOMAIN (DOMAIN_ID, ROLE_ID, DOMTYPEID
+      )
+    values (#{domainId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{domtypeid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    insert into TAW_ROLE_DOMAIN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        DOMAIN_ID,
+      </if>
+      <if test="roleId != null">
+        ROLE_ID,
+      </if>
+      <if test="domtypeid != null">
+        DOMTYPEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        #{domainId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="domtypeid != null">
+        #{domtypeid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample" resultType="java.lang.Integer">
+    select count(*) from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update TAW_ROLE_DOMAIN
+    <set>
+      <if test="record.domainId != null">
+        DOMAIN_ID = #{record.domainId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleId != null">
+        ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.domtypeid != null">
+        DOMTYPEID = #{record.domtypeid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update TAW_ROLE_DOMAIN
+    set DOMAIN_ID = #{record.domainId,jdbcType=VARCHAR},
+      ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      DOMTYPEID = #{record.domtypeid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    update TAW_ROLE_DOMAIN
+    <set>
+      <if test="domtypeid != null">
+        DOMTYPEID = #{domtypeid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    update TAW_ROLE_DOMAIN
+    set DOMTYPEID = #{domtypeid,jdbcType=VARCHAR}
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="org.mybatis.generator.mybatis3.TawRoleDomain">
+    <id column="DOMAIN_ID" jdbcType="VARCHAR" property="domainId" />
+    <id column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
+    <result column="DOMTYPEID" jdbcType="VARCHAR" property="domtypeid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    DOMAIN_ID, ROLE_ID, DOMTYPEID
+  </sql>
+  <select id="selectByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TAW_ROLE_DOMAIN
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainKey">
+    delete from TAW_ROLE_DOMAIN
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample">
+    delete from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    insert into TAW_ROLE_DOMAIN (DOMAIN_ID, ROLE_ID, DOMTYPEID
+      )
+    values (#{domainId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{domtypeid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    insert into TAW_ROLE_DOMAIN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        DOMAIN_ID,
+      </if>
+      <if test="roleId != null">
+        ROLE_ID,
+      </if>
+      <if test="domtypeid != null">
+        DOMTYPEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        #{domainId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="domtypeid != null">
+        #{domtypeid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample" resultType="java.lang.Integer">
+    select count(*) from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update TAW_ROLE_DOMAIN
+    <set>
+      <if test="record.domainId != null">
+        DOMAIN_ID = #{record.domainId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleId != null">
+        ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.domtypeid != null">
+        DOMTYPEID = #{record.domtypeid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update TAW_ROLE_DOMAIN
+    set DOMAIN_ID = #{record.domainId,jdbcType=VARCHAR},
+      ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      DOMTYPEID = #{record.domtypeid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    update TAW_ROLE_DOMAIN
+    <set>
+      <if test="domtypeid != null">
+        DOMTYPEID = #{domtypeid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    update TAW_ROLE_DOMAIN
+    set DOMTYPEID = #{domtypeid,jdbcType=VARCHAR}
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="org.mybatis.generator.mybatis3.TawRoleDomain">
+    <id column="DOMAIN_ID" jdbcType="VARCHAR" property="domainId" />
+    <id column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
+    <result column="DOMTYPEID" jdbcType="VARCHAR" property="domtypeid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    DOMAIN_ID, ROLE_ID, DOMTYPEID
+  </sql>
+  <select id="selectByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TAW_ROLE_DOMAIN
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainKey">
+    delete from TAW_ROLE_DOMAIN
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample">
+    delete from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    insert into TAW_ROLE_DOMAIN (DOMAIN_ID, ROLE_ID, DOMTYPEID
+      )
+    values (#{domainId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{domtypeid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    insert into TAW_ROLE_DOMAIN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        DOMAIN_ID,
+      </if>
+      <if test="roleId != null">
+        ROLE_ID,
+      </if>
+      <if test="domtypeid != null">
+        DOMTYPEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        #{domainId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="domtypeid != null">
+        #{domtypeid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample" resultType="java.lang.Integer">
+    select count(*) from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update TAW_ROLE_DOMAIN
+    <set>
+      <if test="record.domainId != null">
+        DOMAIN_ID = #{record.domainId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleId != null">
+        ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.domtypeid != null">
+        DOMTYPEID = #{record.domtypeid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update TAW_ROLE_DOMAIN
+    set DOMAIN_ID = #{record.domainId,jdbcType=VARCHAR},
+      ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      DOMTYPEID = #{record.domtypeid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    update TAW_ROLE_DOMAIN
+    <set>
+      <if test="domtypeid != null">
+        DOMTYPEID = #{domtypeid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    update TAW_ROLE_DOMAIN
+    set DOMTYPEID = #{domtypeid,jdbcType=VARCHAR}
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="org.mybatis.generator.mybatis3.TawRoleDomain">
+    <id column="DOMAIN_ID" jdbcType="VARCHAR" property="domainId" />
+    <id column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
+    <result column="DOMTYPEID" jdbcType="VARCHAR" property="domtypeid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    DOMAIN_ID, ROLE_ID, DOMTYPEID
+  </sql>
+  <select id="selectByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TAW_ROLE_DOMAIN
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainKey">
+    delete from TAW_ROLE_DOMAIN
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample">
+    delete from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    insert into TAW_ROLE_DOMAIN (DOMAIN_ID, ROLE_ID, DOMTYPEID
+      )
+    values (#{domainId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{domtypeid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    insert into TAW_ROLE_DOMAIN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        DOMAIN_ID,
+      </if>
+      <if test="roleId != null">
+        ROLE_ID,
+      </if>
+      <if test="domtypeid != null">
+        DOMTYPEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        #{domainId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="domtypeid != null">
+        #{domtypeid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.mybatis.generator.mybatis3.TawRoleDomainExample" resultType="java.lang.Integer">
+    select count(*) from TAW_ROLE_DOMAIN
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update TAW_ROLE_DOMAIN
+    <set>
+      <if test="record.domainId != null">
+        DOMAIN_ID = #{record.domainId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleId != null">
+        ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.domtypeid != null">
+        DOMTYPEID = #{record.domtypeid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update TAW_ROLE_DOMAIN
+    set DOMAIN_ID = #{record.domainId,jdbcType=VARCHAR},
+      ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      DOMTYPEID = #{record.domtypeid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    update TAW_ROLE_DOMAIN
+    <set>
+      <if test="domtypeid != null">
+        DOMTYPEID = #{domtypeid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.mybatis.generator.mybatis3.TawRoleDomain">
+    update TAW_ROLE_DOMAIN
+    set DOMTYPEID = #{domtypeid,jdbcType=VARCHAR}
+    where DOMAIN_ID = #{domainId,jdbcType=VARCHAR}
+      and ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+</mapper>

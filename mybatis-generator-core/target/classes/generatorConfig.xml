@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry location="/Users/ton/mvnRespo/ojdbc14/ojdbc14/10.2.0.2.0/ojdbc14-10.2.0.2.0.jar" />
+    <!-- 一个数据库一个context -->
+    <context id="infoGuardian" targetRuntime="MyBatis3">  <!-- "MyBatis3Simple" -->
+        <!-- 注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="false" />
+            <!--
+                是否取消注释
+            -->
+            <property name="suppressDate" value="false" /> <!-- 是否生成注释代时间戳-->
+            <property name="useStatementNamespaces" value="true" />
+        </commentGenerator>
+
+        <!-- jdbc连接 -->
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@120.131.2.119:1521:INAS"
+                        userId="SOAP_DEV"
+                        password="2Zhlmcl!QAZ" />
+
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- 生成实体类地址 -->
+        <javaModelGenerator targetPackage="org.mybatis.generator.mybatis3"
+                            targetProject="src.main.java">
+            <property name="enableSubPackages" value="true" />
+            <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+
+        <!-- 新增插件 -->
+        <!-- 生成POJO类地址 -->
+        <javaPojoGenerator targetPackage="org.mybatis.generator.mybatis3"
+                            targetProject="src.main.java">
+            <property name="enableSubPackages" value="true" />
+            <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
+            <property name="trimStrings" value="false" />
+        </javaPojoGenerator>
+        <!-- 新增插件 -->
+
+        <!-- 生成mapxml文件 -->
+        <sqlMapGenerator targetPackage="org.mybatis.generator.mybatis3"
+                         targetProject="src.main.java">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="org.mybatis.generator.mybatis3"
+                             targetProject="src.main.java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table schema="" tableName="GAUS_USERINFO">
+            <columnOverride column="VERSIONID" jdbcType="INTEGER" javaType="Integer"/>
+            <columnOverride column="REGISTEDATE" jdbcType="DATE" javaType="java.util.Date"/>
+            <columnOverride column="GENDER" jdbcType="INTEGER" javaType="Integer"/>
+            <columnOverride column="STATE" jdbcType="INTEGER" javaType="Integer"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
+
+
+
+
+
+
+
+
